@@ -254,13 +254,44 @@ radius = int(input("Enter Radius: "))
 area = round(math.pi * math.pow(radius, 2), 2)
 print("The area of circle is: ", area)
 ##########################################
+#Factorial of any number
+import math
 
+num = int(input("Enter a number:"))
+
+fact = math.factorial(num)
+print(f"The factorial of {num} is: {fact}")
 ##########################################
+import random
 
+# Love score calulator using ramdom module
 
+ur_name = input("Enter ur name: ")
+lover_name = input("Enter Lover name: ")
+
+love_score = random.randint(0,100)
+
+if love_score < 10 or love_score > 85:
+    print(f"ur score is {love_score}, u go togeather like coke and mentos")
+elif love_score >= 40 and love_score <= 70:
+    print(f"Ur score {love_score}, ur alright")
+else:
+    print(f"ur score {love_score}.")
 ##########################################
+# heads and tails 
 
+import random
 
+#words = ("Heads", "Tails")
+#result = random.choice(words)
+#print(result)
+
+result = random.randint(0,1)
+
+if result == 1:
+    print("Heads")
+else:
+    print("Tails")
 ##########################################
 
 
