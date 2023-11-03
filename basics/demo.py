@@ -56,7 +56,7 @@ elif bmi < 30:
 else:
     print(f"ur BMI: {bmi}, ur OBESE")
 
-'''
+
 if  bmi > 30 and bmi < 35:
     print(f"ur BMI: {bmi}, ur OBESE")
 elif bmi > 25:
@@ -65,7 +65,7 @@ elif bmi >= 18.5:
     print(f"ur BMI: {bmi}, ur NORMAL")
 else:
     print(f"ur BMI: {bmi}, ur UNDERweight")
-'''
+
 ##########################################
 # Burger order
 
@@ -324,15 +324,51 @@ width = int(input("Enter Width of wall: "))
 area_of_wall(h=height, w=width, c=4)
 
 ##########################################
+def format_name(f_name,l_name):
+    if f_name == "" or l_name == "":
+        return "Name or last name cannot be empty"
+    formated_f_name = f_name.title()
+    formated_l_name = l_name.title()
+    return f"{formated_f_name}, {formated_l_name}"
 
+
+first_name = input("Enter Name: ")
+second_name = input("Enter SName: ")
+output = format_name(first_name, second_name)
+print(output)
 
 ##########################################
+# password as a parameter and checks the length of password. 
+# If the length longer than 8 character it returns True
 
+def password_controller(custompassword):
+    if len(custompassword) > 8:
+        return True
+    else:
+        return False
+    
 
+custompassword = input("Enter 8 char password... ")
+print(password_controller(custompassword))
 ##########################################
+#Calculator only limited to +,-,*,/
+def format_name(f_name,l_name, operator):
+    if operator == "+":
+        return f_name + l_name
+    elif operator == "-":
+        return f_name - l_name
+    elif operator == "*":
+        return f_name * l_name
+    elif operator == "/":
+        return f_name / l_name
+    else:
+        print("Enter entter only one of these +,-,*,/  ")
 
-
-
+first_nu = int(input("Enter first integer value: "))
+second_nu = int(input("Enter second integer value: "))
+operator = input("+,-,*,/....")
+output = format_name(first_nu, second_nu, operator)
+print(output)
 ##########################################
 
 
