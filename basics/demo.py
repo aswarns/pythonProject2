@@ -1,3 +1,4 @@
+import string
 import math
 import random
 
@@ -567,9 +568,143 @@ def factorial(p_num):
 
 print(factorial(p_num))
 ##########################################
+
+
+def check_for_float(p_input):
+    try:
+        val = float(p_input)
+        return val
+    except (ValueError, TypeError):
+        print("Error, Please enter numeric input")
+        return False
+
+
+count = 0
+total = 0.0
+average = 0.0
+
+while True:
+    input_num = input("Enter a number: ")
+    if input_num == "done":
+        break
+
+    number = check_for_float(input_num)
+    if not number:
+        continue
+
+    count += 1
+    total = total + number
+
+if count != 0:
+    average = total/count
+print(total, count, average)
+
 ##########################################
+
+
+def check_for_float(p_input):
+    try:
+        val = float(p_input)
+        return val
+    except (ValueError, TypeError):
+        print("Error, Please enter numeric input")
+        return False
+
+
+input_num = input("Enter a number: ")
+if input_num == "done":
+    quit()
+number = check_for_float(input_num)
+if not number:
+    print("The first entered has to be number to continue..")
+    quit()
+
+smallest = number
+biggest = number
+
+while True:
+    input_num = input("Enter a number: ")
+    if input_num == "done":
+        break
+    number = check_for_float(input_num)
+    if not number:
+        continue
+    if number > biggest:
+        biggest = number
+    if number < smallest:
+        smallest = number
+
+print(f"Maximum number: {biggest}, Minimum nu: {smallest}")
+
 ##########################################
+
+# import random
+
+
+def dice1():
+    op = random.randint(1, 6)
+    return op
+
+
+def dice2():
+    op = random.randint(1, 6)
+    return op
+
+
+print(f"Dice1: {dice1()}")
+print(f"Dice2: {dice2()}")
+
 ##########################################
+# import string
+# import random
+
+letters = string.ascii_uppercase + string.ascii_lowercase
+nums = ("0123456789")
+symbols = ("+!@#$%^&*()<>?,./"'{}[]')
+
+ask_letters = int(input("How many letters needed in upper case letters? "))
+ask_num = int(input("How many numbers neededs? "))
+ask_symbols = int(input("How many symbols needed? "))
+
+"""letters = random.choices(letters, k=ask_letters)
+num = random.choices(num, k=ask_num)
+symbols = random.choices(symbols, k=ask_symbols)
+
+result = ''.join(letters+num+symbols)
+print(result)"""
+
+password = ""
+
+for letter in range(1, ask_letters + 1):
+    password += random.choice(letters)
+
+for i in range(1, ask_num + 1):
+    password += random.choice(nums)
+
+for j in range(1, ask_symbols + 1):
+    password += random.choice(symbols)
+
+
+print(f"Your password is : {password}")
+
+password_list = list(password)
+
+# Shuffling all the chars
+random.shuffle(password_list)
+
+final_password = ""
+
+# using for loop
+for ii in password_list:
+    final_password += ii
+
+
+print(final_password)
+
+# using string join function
+"""final_password = "".join(password_list)
+print(final_password)"""
+
 ##########################################
 ##########################################
 ##########################################
