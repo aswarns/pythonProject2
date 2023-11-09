@@ -706,13 +706,126 @@ print(final_password)
 print(final_password)"""
 
 ##########################################
+# Square Of Items using Lists
+
+
+def square_list(custom_list):
+    new_list = []
+    for i in custom_list:
+        j = i**2
+        new_list.append(j)
+    return new_list
+
+
+custom_list = [1, 2, 3, 4, 5]
+print(square_list(custom_list))
+
 ##########################################
+
+
+def square_list(custom_list):
+    for index in range(len(custom_list)):
+        custom_list[index] = custom_list[index] * custom_list[index]
+    return custom_list
+
+
+custom_list = [1, 2, 3, 4, 5]
+print(square_list(custom_list))
+
 ##########################################
+list1 = [10, 10, 5, 15, 50, 50, 20]
+
+# find all  occurenace of 50 and replce with 50
+
+# for index, count in enumerate(list1):
+#    if count == 50:
+#        list1[index] = 5
+# print(list1)
+
+# find first occurenace of 50 and replce with 50
+count = list1.index(50)
+list1[count] = 5
+print(list1)
 ##########################################
+"""First and Last Characters
+Implement a function which takes the string type list
+as a parameter and returns the count of the number of
+strings where the string length is 2 or more and the
+first and the last characters are"""
+
+
+def count_words(list1):
+    counter = 0
+    for i in list1:
+        if len(i) >= 2 and i[0] == i[-1]:
+            counter += 1
+    return counter
+
+
+list1 = ['cbc', 'xyz', 'aba', '2332', 'abc']
+print(count_words(list1))
 ##########################################
+numlist = []
+
+while True:
+    inp = input("Enter a number: ")
+    if inp == "done":
+        break
+    value = float(inp)
+    numlist.append(value)
+
+avg = sum(numlist) / len(numlist)
+print(f"Average: {avg}")
 ##########################################
+"""Create a List from Two Lists
+Given two lists create a third list by picking
+an odd-index element from the first list and
+even-index elements from the second."""
+
+list_one = [4, 12, 16, 21, 24, 28, 32]
+list_two = [5, 10, 15, 20, 25, 30, 35]
+
+third_list = []
+
+odd_element = list_one[1::2]
+print(odd_element)
+
+even_element = list_two[0::2]
+print(even_element)
+
+third_list.extend(odd_element)
+third_list.extend(even_element)
+print(third_list)
 ##########################################
+"""Remove an element at index 4 in a given list and
+add it to the 2nd position and at the end of the list."""
+
+sample_list = [21, 55, 18, 33, 24, 22, 68, 35, 79]
+
+length = len(sample_list)
+chunk_size = int(length / 3)
+
+start = 0
+end = chunk_size
+
+for i in range(1, 4):
+    list_chunk = sample_list[start:end]
+    print(f"Chunk-{i} = {list(reversed(list_chunk))}")
+    start = end
+    end += chunk_size
 ##########################################
+"""Format List
+Print a given list in the format that is shown below using join method."""
+
+custom_list = [1, 2, 3, 4, 5]
+
+op = []
+for i in custom_list:
+    op.append(str(i))
+
+custom_string = " | ".join(op)
+print(custom_string)
+
 ##########################################
 ##########################################
 ##########################################
