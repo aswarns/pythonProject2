@@ -897,14 +897,196 @@ ll_list = user_input.split(",")
 random_name = random.choice(ll_list)
 print(f"{random_name} is going to pay the bill.")
 ##########################################
+# Dictionary section
+
+my_dict = {"Name": "Ashish", "Sirname": "Singh", "App s": "MS Office"}
+
+my_dict["Apps"] = "MSOffice"
+print(my_dict)
 ##########################################
+# print(generate_dictionary(p_val))
+
+
+def generate_dictionary(p_val):
+    my_dict = {}
+    for num in range(1, p_val+1):
+        my_dict[num] = num * num
+        num += num
+    return my_dict
+
+
+print(generate_dictionary(5))
+
 ##########################################
+# Multiply Dictionary Items
+# Implement a function which takes dictionary as a
+# parameter and returns multiplication of values of this dictionary
+
+my_dict = {"One": 1, "Two": 2, "Three": 3, "Four": 4}
+
+
+def multiply_values(p_my_dict):
+    output = 1
+    for key in p_my_dict:
+        output = output * p_my_dict[key]
+    return output
+
+
+print(multiply_values(my_dict))
 ##########################################
+"""Student Grades
+Implement a function which takes a dictionary as
+a parameter in which student scores are stored and
+converts their scores to grades and return it as new dictionary.
+
+Scores 85 - 100: Grade = "Outstanding"
+Scores 65 - 84: Grade = "Good"
+Scores 50 - 64: Grade = "Acceptable"
+Scores 50 lower: Grade = "Fail"
+"""
+student_scores = {
+    "John": 90,
+    "Edy": 48,
+    "Marry": 88,
+    "Ewan": 79,
+    "Park": 62,
+    "Miller": 41,
+    "AAdi": 50,
+    "Ashu": 59
+}
+
+
+def convert_grade(p_student_scores):
+    for key, value in p_student_scores.items():
+        if value >= 85:
+            p_student_scores[key] = "Outstanding"
+        elif value >= 65:
+            p_student_scores[key] = "Good"
+        elif value >= 50:
+            p_student_scores[key] = "Acceptable"
+        elif value < 50:
+            p_student_scores[key] = "Fail"
+    return p_student_scores
+
+
+print(convert_grade(student_scores))
+
 ##########################################
+
+
+def convert_grade(p_dict):
+    student_grades = {}
+    for key in p_dict:
+        score = p_dict[key]
+        if score >= 85:
+            student_grades[key] = "Outstanding"
+        elif score >= 65:
+            student_grades[key] = "Good"
+        elif score >= 50:
+            student_grades[key] = "Acceptable"
+        else:
+            student_grades[key] = "Fail"
+    return student_grades
+
+
+print(convert_grade(convert_grade))
 ##########################################
+# Dictionary section
+"""Rename Key
+Write a program which renames the key in the dictionary,
+you need to rename key city to address in the following dictionary."""
+
+my_dict = {
+    "name": "Edy",
+    "age": 30,
+    "salary": 5000,
+    "city": "London"
+}
+
+
+print(my_dict)
+
+my_dict["address"] = my_dict.pop('city')
+print(my_dict)
+
 ##########################################
+# IN / NOT IN Operator
+
+# List
+list1 = [1, 2, 3, 4]
+# print(2 in list1)
+# print(9 in list1)
+
+# String
+string1 = "I Love Python"
+# print("Love" in string1)
+# print("Love" not in string1)
+# print("ashish" in string1)
+
+# Dictionary IN / NOT IN Operator
+my_dict1 = {1: "one", 2: "Two", 3: "three"}
+print("one" in my_dict1)
+# Dictionary checks only keys ... not values
+print(1 in my_dict1)
 ##########################################
+"""Count Characters in a Word
+Implement a function that takes a String as a parameter
+and returns a dictionary with characters as keys from the
+String and values are the occurrence of characters in the
+String. Basically we are counting the occurrence of characters
+in a given string and returning it as output in Dictionary."""
+
+
+def count_character(p_val):
+    my_dict = {}
+    for i in p_val:
+        if i not in my_dict:
+            count_of_str = p_val.count(i)
+            my_dict[i] = count_of_str
+    return my_dict
+
+
+print(count_character("BABACDAS"))
+
 ##########################################
+# list inside Dictionary
+lang = {
+    "Ashish": ["Python", "Java", "Rubby"],
+    "Aadi": "Pascal",
+    "Akki": "VisualC"
+}
+# print(lang["Ashish"][0])
+# print(lang["Ashish"][2])
+
+
+# Dictionary inside Dictionary
+modern_lang = {
+    "Ashish": {"new_lang": ["Python", "Java", "Rubby"],
+               "experience": 10
+               },
+    "Aadi": "Pascal",
+    "Akki": "VisualC"
+}
+
+# print(modern_lang["Ashish"]["new_lang"][0])
+# print(modern_lang["Ashish"]["new_lang"][1])
+# print(modern_lang["Ashish"]["experience"])
+
+
+# Dictionary inside list
+my_list = [
+    {"username": "Ashish",
+     "new_lang": ["Python", "Java", "Rubby"],
+     "experience": 10
+     },
+    {"username": "Aadi",
+     "new_lang": ["Pascal", "VB", "Tally"],
+     "experience": 10
+     }
+]
+print(my_list)
+print(my_list[1]["experience"])
+
 ##########################################
 ##########################################
 ##########################################
