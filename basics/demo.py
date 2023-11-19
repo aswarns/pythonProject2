@@ -1,6 +1,11 @@
+# from ascii_art import logo
+import platform
+import os
+import copy  # needed for DEEP COPY
 import string
 import math
 import random
+import pprint
 
 #############
 # Celsius to fahrenheit
@@ -1087,6 +1092,507 @@ my_list = [
 print(my_list)
 print(my_list[1]["experience"])
 
+##########################################
+# import pprint
+
+"""Nesting Dictionary Exercise
+Implement a function that adds new key value pairs to
+the programming_language list. You can see the list below
+in which there is only two dictionaries, after insert method,
+there should be three dictionaries. After insertion we need
+to print programming_language list to the console.
+"""
+programming_language = [
+    {"user_name": "Elshad",
+     "favorite_languages": ["Python", "Java", "C#"],
+     "experience": 10
+     },
+    {"user_name": "Renad",
+     "favorite_languages": ["Scratch", "Python"],
+     "experience": 2
+     },
+]
+
+
+def add_new_user(p_user_name, p_favorite_languages, p_experience):
+    new_user = {}
+    new_user["user_name"] = p_user_name
+    new_user["favorite_languages"] = p_favorite_languages
+    new_user["experience"] = p_experience
+
+    programming_language.append(new_user)
+    pprint.pprint(programming_language)
+
+
+add_new_user("Edy", ["Java", "Kotlin", "Swift"], 10)
+
+##########################################
+# import pprint
+
+"""Count Characters in a Word
+Implement a function that takes a String as a parameter
+and returns a dictionary with characters as keys from the
+String and values are the occurrence of characters in the
+String. Basically we are counting the occurrence of characters
+in a given string and returning it as output in Dictionary."""
+
+
+def count_character(p_val):
+    my_dict = {}
+    for i in p_val:
+        if i not in my_dict:
+            count_of_str = p_val.count(i)
+            my_dict[i] = count_of_str
+    pprint.pprint(my_dict)
+
+
+count_character("BABACDAS")
+
+##########################################
+item = {
+    "computer": 10,
+    "printer": 8,
+    "mouse": 15,
+    "keyboad": 4,
+    "usb": 2
+}
+
+# print(item["webcam"])
+# dictionary get method doesn't update the dictionary
+# print(item.get("micro"), "item doesn't exists.")
+
+# dictionary setdefault method update dictionary
+quantity = item.setdefault("mic", 0)
+print(quantity)
+print(item)
+##########################################
+custom_dict = {
+    0: "zero",
+    1: "one",
+    2: "two",
+}
+
+devices_list = ["phone", "tablet", "computer", "TV"]
+
+# new_dict = {}.fromkeys(devices_list, 0)
+# print(new_dict)
+
+# keys = custom_dict.keys()
+# print(keys)
+for item in custom_dict.keys():
+    print(item)
+##########################################
+"""Group Value Types
+Implement a function which takes a List a parameter
+and groups them according to their data types
+(integer or string) and return dictionary."""
+
+# import pprint
+
+custom_list = [10, "one", "two", "ten", 20, 30, "five", 40, "nine", 50]
+
+"""
+def group_types(p_custom_list):
+    new_dict = {}
+    for i in p_custom_list:
+        if isinstance(i, int):
+            new_dict = {}.fromkeys(p_custom_list, "Integer")
+        elif isinstance(i, str):
+            new_dict = {}.fromkeys(p_custom_list, "String")
+    pprint.pprint(new_dict)"""
+
+
+def group_types(p_custom_list):
+    op_dict = {}.fromkeys(p_custom_list)
+    for key in p_custom_list:
+        if isinstance(key, int):
+            op_dict[key] = "Integer"
+        if isinstance(key, str):
+            op_dict[key] = "String"
+    return op_dict
+
+
+print(group_types(custom_list))
+
+##########################################
+custom_dict = {
+    0: "zero",
+    1: "one",
+    2: "two",
+}
+
+for item in custom_dict:
+    print(item, custom_dict[item])
+
+print()
+
+for key, value in custom_dict.items():
+    print(key, value)
+
+##########################################
+names_dict = {
+    1: "Elshad",
+    2: "Renad",
+    3: "Johanna",
+    4: "Appmillers"
+}
+
+
+def value_length(p_names_dict):
+    new_dict = {}
+    for key, value in p_names_dict.items():
+        new_dict[key] = {}
+        new_dict[key][value] = len(value)
+    return new_dict
+
+
+print(value_length(names_dict))
+
+##########################################
+dict1 = {1: "one", 2: "two"}
+dict2 = {3: "three", 4: "four"}
+dict3 = {5: "five", 6: "six"}
+
+
+def concatenate(dict1, dict2, dict3):
+    new_dict = {}
+    for dic in (dict1, dict2, dict3):
+        new_dict.update(dic)
+    return new_dict
+
+
+print(concatenate(dict1, dict2, dict3))
+
+##########################################
+"""Remove Empty Items
+Implement a function which takes as a parameter
+dictionary and removes empty items from it and
+return new dictionary. If there is not any empty
+item in the dictionary it will return itself."""
+
+
+custom_dict = {
+    "name": "Elshad",
+    "age": 28,
+    "city": None
+}
+
+
+def remove_empty_items(p_dict):
+    for key, value in list(p_dict.items()):
+        if value is None:
+            p_dict.pop(key)
+    return p_dict
+
+
+print(remove_empty_items(custom_dict))
+
+##########################################
+""" Merge Two Dictionary
+Implement a function which takes as parameter two
+dictionaries and merge these two dictionaries using
+Dictionary methods into third dictionary."""
+
+
+dict1 = {'One': 2, 'Two': 2, 'Three': 3}
+dict2 = {'Three': 3, 'Four': 4, 'Five': 5}
+
+
+def merge_dict(p_dict1, p_dict2):
+    new_dict = {}
+    new_dict.update(p_dict1)
+    new_dict.update(p_dict2)
+    return new_dict
+
+
+print(merge_dict(dict1, dict2))
+
+##########################################
+""" Merge Two Dictionary
+Implement a function which takes as parameter two
+dictionaries and merge these two dictionaries using
+Dictionary methods into third dictionary."""
+
+
+dict1 = {'One': 2, 'Two': 2, 'Three': 3}
+dict2 = {'Three': 3, 'Four': 4, 'Five': 5}
+
+
+def merge_dict(p_dict1, p_dict2):
+    new_dict = {}
+    new_dict.update(p_dict1)
+    new_dict.update(p_dict2)
+    return new_dict
+
+
+print(merge_dict(dict1, dict2))
+
+##########################################
+# import copy
+
+# Dictionary SHallow copy (means copied Dictionary still refer to org and
+# vice-versa, and if update one place it will update both Dictionary)
+
+person = {
+    "name": "Elshad",
+    "age": 28,
+    "city": ["London", "UK", "USA"]
+}
+
+print(person["city"])
+
+# new_person = person
+# new_person["city"] = "Hyd"
+# print(new_person["city"])
+# print(person["city"])
+
+new_person = person.copy()
+new_person["city"] = "Mumbai"
+print(new_person["city"])
+print(person["city"])
+
+
+# Dictionary DEEP copy
+new_person_deep_copy = copy.deepcopy(person)
+new_person_deep_copy["city"] = "Mumbai"
+print(new_person_deep_copy["city"])
+print(person["city"])
+
+##########################################
+"""Custom Deep Copy for List Values
+Implement custom deep copy method for a dictionary
+where the values are lists."""
+
+
+original_dict = {
+    "names": ["Elshad", "John", "Edy"],
+    "numbers": [1, 2, 3, 4, 5]
+}
+
+
+def deep_copy(p_original_dict):
+    new_dict = {}
+    for key, value in p_original_dict.items():
+        new_value = value.copy()
+        new_dict[key] = new_value
+    return new_dict
+
+
+copied_dict = deep_copy(original_dict)
+copied_dict["names"].append("Jack")
+copied_dict["numbers"].append(6)
+
+print(original_dict)
+print(copied_dict)
+
+##########################################
+"""Calculcate Total Price
+->Create a program calculates the total price of items
+that we want to buy.
+->When program starts it will display the list of items,
+using available_parts dictionary
+->Then program asks to select an item
+->Then based on user selected item, the program checks if
+the item exist in the store or not. Because when quantity
+of item is 0 then it is out of stock
+->Finally, if it is not out of stock we calculate total price
+of items and decrease quantity from the stock. This continues
+until user select 0. And when the loop is terminated the total
+price is printed to the console"""
+
+
+available_parts = {
+    "1": "computer",
+    '2': "monitor",
+    '3': "keyboard",
+    '4': "mouse",
+    '5': "hdmi cable",
+    '6': "dvd drive"
+}
+
+price_quantity = {
+    "computer": {"price": 500, "quantity": 10},
+    "monitor": {"price": 200, "quantity": 8},
+    "keyboard": {"price": 500, "quantity": 5},
+    "mouse": {"price": 10, "quantity": 0},
+    "hdmi cable": {"price": 20, "quantity": 7},
+    "dvd drive": {"price": 50, "quantity": 5},
+}
+
+
+current_choice = None
+total_price = 0
+
+while current_choice != '0':
+    if current_choice in available_parts:
+        choosen_part = available_parts[current_choice]
+        if price_quantity[choosen_part]["quantity"] > 0:
+            print(f"Adding {choosen_part}")
+            price_quantity[choosen_part]["quantity"] -= 1
+            total_price += price_quantity[choosen_part]["price"]
+        else:
+            print(f"{choosen_part} is out of stock.")
+    else:
+        print("Please add options from the list.")
+        for key, value in available_parts.items():
+            print(f"{key}: {value}")
+        print("0: to finish")
+    current_choice = input(">")
+
+print(f"Total price: {total_price}")
+
+##########################################
+# Blind auction
+# import os
+# import platform
+# from ascii_art import logo
+
+
+def clear_screen():
+    if platform.system() == 'Windows':
+        os.system('cls')  # for windows
+    elif platform == "linux":
+        os.system('clear')  # for mac and linux
+
+
+clear_screen()
+print("Welcome to Auction\n\n")
+# print(logo)
+
+
+def bidding_auction():
+    bidder = "y"
+    my_dict = {}
+
+    while bidder == "y":
+        # print(logo)
+        name = input("What is your name?: ")
+        bid_amount = input("What is your bid amount?: ")
+        my_dict[name] = bid_amount
+        bidder = input("Are there any other bidder?(y/n): ")
+        print(my_dict)
+        v = list(my_dict.values())
+        k = list(my_dict.keys())
+
+        max_bidder = k[v.index(max(v))]
+        max_val = my_dict[max_bidder]
+
+        min_bidder = k[v.index(min(v))]
+        min_val = my_dict[min_bidder]
+        clear_screen()
+
+    return f"{max_bidder} is winner and quoted amount is {max_val}$ \n \
+        \b{min_bidder} is last and quoted amount is {min_val}$"
+
+
+print(bidding_auction())
+
+
+# ===================#
+"""
+# Blind auction
+import os
+import platform
+
+
+def clear_screen():
+    if platform.system() == 'Windows':
+        os.system('cls')  # for windows
+    # elif platform == "linux":
+    else:
+        os.system('clear')  # for mac and linux
+
+
+clear_screen()
+print("Welcome to Auction\n\n")
+
+
+bids = {}
+bidding_finish = False
+
+
+def highest_bidder(p_bids):
+    highest_bid = 0
+    bidder_name = ""
+    for key, value in p_bids.items():
+        if value > highest_bid:
+            highest_bid = value
+            bidder_name = key
+    print(f"The winner is {bidder_name} with bid of {highest_bid}")
+
+
+while not bidding_finish:
+    name = input("What is your name?: ")
+    bid_amount = int(input("What is your bid amount?: $"))
+    bids[name] = bid_amount
+    should_continue = input("Are there any other bidder?(y/n): ")
+    if should_continue == "n" or should_continue == "N":
+        bidding_finish = True
+        highest_bidder(bids)
+    elif should_continue == "Y" or should_continue == "y":
+        clear_screen()
+"""
+
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
+##########################################
 ##########################################
 ##########################################
 ##########################################
