@@ -7,7 +7,45 @@ import math
 import random
 import pprint
 
-#############
+#######################################
+#######################################
+# Tuple new_tupple = (1,2,3)
+# List  new_list = [1,2,3]
+# Dictionary new_dict = {1: "a", 2: "b", 3: "c"}
+
+
+# Convert string to list
+string_one = "I love India"
+word = string_one.split(" ")
+print(type(word))
+
+
+# convert list to string
+string1 = ""
+new_string = string1.join(word)
+print(type(new_string))
+#######################################
+#######################################
+my_tuple = (1, 2, 3)
+print(my_tuple)
+
+new_list = [1, 2, 3]
+print(new_list)
+
+print("\n\nPrinting TUPLE values")
+club = ("FC Bareclone", "Spain", 1899)
+a, b, c = club
+print(a)
+print(b)
+
+
+print("\n\nPrinting list values")
+my_list = ["one", "two", "three"]
+one, two, three = my_list
+print(one)
+print(two)
+print(three)
+#######################################
 # Celsius to fahrenheit
 # (C * (9/5) + 32) = Fahrenheit
 
@@ -1534,12 +1572,163 @@ while not bidding_finish:
 """
 
 ##########################################
+"""Sum Tuple Elements using Unpack
+Write a Python program to unpack tuple in several
+variables and print out sum of these variables, the
+output must be as shown below."""
+
+my_tuple = (10, 40, 80, 90)
+
+a, b, c, d = my_tuple
+
+print(f"{a}+{b}+{c}+{d}={a+b+c+d}")
 ##########################################
+my_tuple = ("one", "two", "three")
+
+"""for index in range(len(my_tuple)):
+    value = my_tuple[index]
+    print(index, value)"""
+
+
+for index, value in enumerate(my_tuple):
+    print(index, value)
+
+print("\n\n")
+
+# enumerate(list,1) we can use 2nd parameter to start index with given value
+my_list = [1, 2, 3, 4]
+for index, value in enumerate(my_list, 1):
+    print(index, value)
+
 ##########################################
+"""Even Index with Enumerate
+Implement a function which takes as a parameter
+a tuple and return a new tuple but only have even
+index elements from original tuple."""
+
+my_tuple = ("a", "b", "c", "d", "e", "f", "g")
+
+
+def even_index_items(p_my_tuple):
+    result_list = []
+    for index, value in enumerate(p_my_tuple):
+        result_list.append(value)
+    return tuple(result_list)
+
+
+print(even_index_items(my_tuple))
+
 ##########################################
+"""Find Most Frequent Item
+Implement a function which takes a tuple as a parameter
+and returns another tuple with two elements. First element
+is the most frequent item and the second element of number of repetition.
+
+Hint: Use count() method"""
+
+my_tuple = ("a", "b", "c", "d", "e", "a", "c",
+            "e", "b", "e", "c", "a", "f", "e", "r")
+
+
+def most_frequent(p_my_tuple):
+    max_count = 0
+    item = p_my_tuple[0]
+    for value in p_my_tuple:
+        current_item_count = p_my_tuple.count(value)
+        if current_item_count > max_count:
+            max_count = current_item_count
+            item = value
+    return (item, max_count)
+
+
+print(most_frequent(my_tuple))
+
 ##########################################
+"""Nested Tuple Indexing: - Using nested indexing print items from clubs tuple.
+    The name of first player from Arsenal
+    The year that Manchester United FC founded.
+    Squad number of Dembele
+    The tuple representing the 2nd player in Real Madrid CF"""
+
+
+clubs = (("FC Barcelona", "Spain", 1899,
+          [
+              (3, "Pique"),
+              (5, "Busquets"),
+              (7, "Dembele"),
+          ]
+          ),
+         ("Real Madrid CF", "Spain", 1902,
+          [
+              (7, "Hazard"),
+              (9, "Benzema"),
+              (10, "Modric"),
+          ]
+          ),
+         ("Manchester United FC", "England", 1878,
+          [
+              (6, "Pogba"),
+              (7, "Ronaldo"),
+              (14, "Lingard"),
+          ]
+          ),
+         ("Arsenal FC", "England", 1886,
+          [
+              (7, "Lacazette"),
+              (14, "Aubameyang"),
+              (16, "Holding"),
+          ]
+          ),
+         )
+
+# TODO
+print(clubs[3][3][0][1])
+print(clubs[2][2])
+print(clubs[0][3][2][0])
+print(clubs[1][3][1])
+
 ##########################################
+"""Convert Tuple to Dictionary
+Implement a function which takes a list of tuples
+as a parameter and convert it to a dictionary and
+return the dictionary."""
+
+tuple_list = [("one", 11), ("two", 2), ("three", 3), ("four", 4)]
+
+
+def convert_to_dict(p_tuple_list):
+    result_dict = {}
+    for key, value in p_tuple_list:
+        result_dict.setdefault(key, value)
+    return result_dict
+
+
+print(convert_to_dict(tuple_list))
+
 ##########################################
+"""Comparing Tuples
+Implement a function which takes a string
+(sentence) as a parameter and returns a tuple
+in which the words from the given sentenced are
+ordered based on their length."""
+
+order_string = "Python is my favorite programming language"
+
+
+def order_words(p_text):
+    words = p_text.split(" ")
+    nested_list = list()
+    for word in words:
+        nested_list.append((len(word), word))
+    nested_list.sort()
+    result = list()
+    for length, word in nested_list:
+        result.append(word)
+    return tuple(result)
+
+
+print(order_words(order_string))
+
 ##########################################
 ##########################################
 ##########################################
