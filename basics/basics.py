@@ -9,6 +9,11 @@ import pprint
 
 #######################################
 #######################################
+# list
+list_symbol = []
+tuple_symbol = ()
+set_symbol = {}
+dict_symbol = {"key": "value"}
 # Tuple new_tupple = (1,2,3)
 # List  new_list = [1,2,3]
 # Dictionary new_dict = {1: "a", 2: "b", 3: "c"}
@@ -1730,9 +1735,316 @@ def order_words(p_text):
 print(order_words(order_string))
 
 ##########################################
+# sets
+# fruits = {"apple", "pear", "limon", "grape", "orange"}
+
+# print(type(fruits))
+
+# empty set
+# new_set = {*""}
+# print(type(new_set))
+
+my_set = set()
+# print(type(my_set))
+
+my_set.add(100)
+my_set.add(99)
+my_set.add(100)
+print(my_set)
+
+
+while len(my_set) < 5:
+    element = input("Please enter value: ")
+    my_set.add(element)
+
+
+print(my_set)
+
+
+my_list = ["apple", "apple", "orange", "grape", "grape", "orange", "apple"]
+
+my_set = set(my_list)
+print(my_set)
+
+my_list = list(my_set)
+print(my_list)
 ##########################################
+"""Adding Members from List
+Implement a function which takes as a parameter List
+and add elements to a Set and return a set."""
+
+my_list = [3, 4, 5, 1, 1, 3, 4, 9, 8]
+
+
+def adding_set(my_list):
+    my_set = set()
+    for item in my_list:
+        my_set.add(item)
+    return my_set
+
+
+print(adding_set(my_list))
+
 ##########################################
+"""Delete Restricted Items
+Set of items and set of restricted items are given,
+based on the beach type (family or normal) the list
+of items should be printed to the console. Restricted
+items are not allowed to family beach and everything
+else can be taken to normal beach except drugs."""
+
+general_items = {
+    "Sand toys",
+    "Beach towels",
+    "Beach umbrella",
+    "Camp chair",
+    "Snacks",
+    "Hats",
+    "Camera",
+    "Sunglasses",
+    "Alcholic Drinks",
+    "Non Alcholic Drinks",
+    "Sigarettes",
+    "Sharp Objects"
+}
+
+restricted_items = {
+    "Non Alcholic Drinks",
+    "Sigarettes",
+    "Sharp Objects",
+    "Amplified Audio",
+    "Drugs"
+}
+
+user_input = input("Select Beach type(1 - Family Beach, 2 - Normal Beach)")
+
+if user_input == "1":
+    for item in restricted_items:
+        try:
+            general_items.remove(item)
+        except KeyError:
+            print(f"Skipping {item}.")
+else:
+    try:
+        general_items.remove("Drugs")
+    except KeyError:
+        print("Skipping Drugs.")
+print("See below the list of item that you can take.")
+for item in general_items:
+    print(f"\t{item}")
+
 ##########################################
+# fruits = {"apple", "apple", "orange", "grape", "grape", "orange", "apple"}
+
+# print(fruits)
+
+# furits.clear()
+# print(furits)
+
+
+# fruits.remove("apple")
+# print(fruits)
+
+# fruits.discard("orange")
+# print(fruits)
+
+# Set Union
+fruits = {"apple", "apple", "orange", "grape", "Cucumber"}
+vegs = {"Cucumber", "pepper", "onion"}
+
+all_togeather1 = fruits.union(vegs)
+# print(all_togeather1)
+
+# pipe operator to club all sets as UNION
+all_togeather2 = fruits | vegs
+# print(all_togeather2)
+
+
+"""Combine Sets
+Two sets are given write a program which creates a
+new set with all items from both sets by removing
+duplicates. And print final set to the console"""
+
+set1 = {10, 20, 30, 40, 50}
+set2 = {60, 20, 50, 70}
+
+combined_set = set1.union(set2)
+# print(combined_set)
+
+#####################
+"""Union List of Sets
+Implement a function which takes list of sets as a
+parameter and returns one set which includes all
+elements from the given list of sets."""
+
+list_of_sets = [
+    {10, 20, 30, 40, 50},
+    {"apple", "orange", "limon", "pear"},
+    {"London", "Berlin", "Paris"},
+    {"Python", "Java", "Swift"},
+    {10, "ten", "20", 20}
+]
+
+
+"""def convert_ls(list_of_sets):
+    new_list = []
+    for item in list_of_sets:
+        for val in item:
+            new_list.append(val)
+    new_set = set(new_list)
+    return new_set
+"""
+
+
+def convert_ls(list_of_sets):
+    result_set = set()
+    for item in list_of_sets:
+        result_set = result_set.union(item)
+    return result_set
+
+
+# print(convert_ls(list_of_sets))
+
+#####################
+
+# Set intersection (common elements of set)
+
+fruits = {"apple", "apple", "orange", "grape", "Cucumber"}
+vegs = {"Cucumber", "pepper", "onion"}
+mixed = {"apple", "Cucumber", "onion"}
+
+all_set = fruits.intersection(vegs, mixed)
+print(all_set)
+
+# set using & operator
+intersect = fruits & vegs & mixed
+print(intersect)
+
+set1 = set(range(20))
+print(set1)
+
+set2 = set(range(0, 20, 2))
+print(set2)
+
+set3 = set(range(0, 20, 3))
+print(set3)
+
+print(set.intersection(set1, set2, set3))
+
+#####################
+
+"""Find Numbers Divisible by 3 and 4
+Implement a function which takes a parameter
+N and returns Set of numbers which are divisible
+by 3 and 4 between 0 and N."""
+
+
+def divisible_by_3and4(p_num):
+    set1 = set(range(0, p_num, 3))
+    set2 = set(range(0, p_num, 4))
+
+    all = set1.intersection(set2)
+    return all
+
+
+num = 100
+print(divisible_by_3and4(num+1))
+
+#####################
+
+"""Find Preposition
+Implement a function which takes a quote as a
+parameter to find out which given prepositions
+have been used in the quote. The function should
+return the set of prepositions that are used in the quote."""
+
+
+quote = """Success is no accident. It is hard work,
+perseverance, learning, studying, sacrifice and most
+of all, love of what you are doing or learning to do."""
+
+prep = {"as", "but", "by", "for", "in", "of", "on", "to", "with"}
+
+
+def find_prep(p_quote):
+    words = p_quote.split()
+    words_set = set(words)
+    preps_used = words_set.intersection(prep)
+    print(preps_used)
+
+
+find_prep(quote)
+
+#####################
+# Set Subtraction
+fruits = {"apple", "apple", "orange", "grape", "Cucumber"}
+vegs = {"Cucumber", "pepper", "onion", "garlic"}
+
+diff_fruits1 = fruits.difference(vegs)
+print(diff_fruits1)
+
+diff_veg1 = vegs.difference(fruits)
+print(diff_veg1)
+
+
+diff_fruits2 = fruits - vegs
+print(diff_fruits2)
+
+diff_veg2 = vegs - fruits
+print(diff_veg2)
+
+#####################
+"""Difference of More than two Sets
+There are three Sets are given. Write a program
+that finds the difference of them."""
+
+a = {1, 2, 3, 40, 50, 300, 400}
+b = {10, 20, 30, 40, 300}
+c = {100, 200, 300, 400}
+
+differenc_a_b = a.difference(b, c)
+print(differenc_a_b)
+
+print(a-b-c)
+#####################
+# Set Symmectric difference (remove common elements,
+# print only element which is uncommon)
+
+fruits = {"apple", "apple", "orange", "grape", "Cucumber"}
+vegs = {"Cucumber", "pepper", "onion", "garlic"}
+
+set_symmetric_difference = fruits.symmetric_difference(vegs)
+print(set_symmetric_difference)
+
+#####################
+# modifying sets
+fruits = {"apple", "apple", "orange", "grape", "Cucumber"}
+vegs = {"Cucumber", "pepper", "onion", "garlic", "broccoli"}
+
+union_set = fruits.union(vegs)
+print(union_set)
+
+fruits |= vegs
+print(fruits)
+#####################
+# Subset and superset
+animals = {"Dog", "Cat", "Robin", "Hoese", "Swallow"}
+birds = {"Robin", "Swallow"}
+
+result = birds.issubset(animals)
+print(result)
+
+result1 = animals.issubset(birds)
+print(result1)
+
+print(birds <= animals)
+
+# set superset
+result2 = birds.issuperset(animals)
+print(result2)
+
+result3 = animals.issuperset(birds)
+print(result3)
 ##########################################
 ##########################################
 ##########################################
