@@ -2046,6 +2046,19 @@ print(result2)
 result3 = animals.issuperset(birds)
 print(result3)
 ##########################################
+while True:
+    ask = input("ENter a number: ")
+    sum_of_digit = 0
+    try:
+        for digit in ask:
+            sum_of_digit += int(digit)
+    except ValueError:
+        print("This value is not numeric!")
+    else:
+        print(f"Sum of the number: {sum_of_digit}")
+    finally:
+        break
+
 ##########################################
 ##########################################
 ##########################################
